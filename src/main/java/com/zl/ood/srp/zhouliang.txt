@@ -1,0 +1,24 @@
+SRP： 单一职责原则
+
+    职责： 是引起变化的原因
+    如果有多于一个的动机去改变一个类，这个类就具有多于一个职责
+    把多个职责耦合在一起，一个的变化可能会削弱或者抑制这个类完成其他职责的能力
+
+    SRP ： 对一个类而言， 应该仅有一个引起它变化的原因。
+
+
+对例子的理解：
+ Configuration 和 Configuration模拟从配置文件读取邮件服务器信息
+ DBUtil模拟从数据库获取每一个用户的信息（用户名和邮箱）
+ MailUtil模拟发送邮件（传入四个参数）
+ PromotionMail将促销信息发送给每个用户
+
+ 重构
+ Configuration 和 Configuration不变
+ DBUtil 不变
+ 实体：Product(产品类),Mail(邮件类),User
+ ProductService（产品服务类，获取所有促销产品信息）
+ MailService（邮件服务类，读取邮件服务器信息，发送邮件）
+ UserService(可以获取所有用户)
+ PromotionMail类（发送促销邮件：1、通过ProductService获取所有促销产品信息
+ 2、通过UserService获取所有用户信息 3、用MailService给所有用户发送促销信息）
