@@ -1,0 +1,5 @@
+Logger类是对日志的打印，根据不同的type和method打印日志
+
+有两个动作，一个是根据日志类型获取msg，一个是根据method发送日志
+抽象出一个format类，和一个formatFactory类（根据type new format的子类）
+抽象一个sender类，子类继承sender类，重写send方法
